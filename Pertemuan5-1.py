@@ -1,6 +1,6 @@
 import tkinter as tk
 
-class AplikasiPakarDeteksiPenyakit(tk.Tk):
+class AplikasiPakarDiagnosaPenyakit(tk.Tk):
     def __init__(self):
         super().__init__()
         self.data_gejala = {
@@ -71,7 +71,7 @@ class AplikasiPakarDeteksiPenyakit(tk.Tk):
         
         self.gejala_terpilih = {}
         
-        self.title("Sistem Pakar Deteksi Penyakit THT")
+        self.title("Sistem Pakar Diagnosa Penyakit")
         self.geometry("790x890")
         
         self.halaman_welcome = tk.Frame(self)
@@ -91,7 +91,7 @@ class AplikasiPakarDeteksiPenyakit(tk.Tk):
         halaman.pack(fill="both", expand=True)
     
     def buat_halaman_welcome(self):
-        tk.Label(self.halaman_welcome, text="Selamat datang di Sistem Pakar Deteksi Penyakit", font=("Arial", 18), wraplength=350)
+        tk.Label(self.halaman_welcome, text="Selamat datang di Sistem Pakar Diagnosa Penyakit", font=("Arial", 18), wraplength=350)
         tk.Button(self.halaman_welcome, text="Mulai Diagnosa", font=("Arial", 18), command=lambda: self.tampilkan_halaman(self.halaman_daftar_gejala)).pack(pady=300)
 
     def buat_halaman_daftar_gejala(self):
@@ -137,9 +137,9 @@ class AplikasiPakarDeteksiPenyakit(tk.Tk):
         desk_gejala_terpilih = [self.data_gejala[kode] for kode in gejala_pasien]
         
         if gejala_pasien and hasil:
-            self.kesimpulan = "Dari gejala yang Anda pilih:\n- " + "\n- ".join(desk_gejala_terpilih) + "\n\nAnda terdeteksi memiliki penyakit:\n-" + "\n- ".join(hasil)
+            self.kesimpulan = "Dari gejala yang Anda pilih:\n- " + "\n- ".join(desk_gejala_terpilih) + "\n\nAnda didiagnosa memiliki penyakit:\n-" + "\n- ".join(hasil)
         elif gejala_pasien and not hasil:
-            self.kesimpulan = "Dari gejala yang Anda pilih:\n- " + "\n- ".join(desk_gejala_terpilih) + "\nTidak terdeteksi penyakit yang sesuai.\nSilakan konsultasikan dengan dokter untuk pemeriksaan lebih lanjut."
+            self.kesimpulan = "Dari gejala yang Anda pilih:\n- " + "\n- ".join(desk_gejala_terpilih) + "\nTidak didiagnosa penyakit yang sesuai.\nSilakan konsultasikan dengan dokter untuk pemeriksaan lebih lanjut."
         else:
             self.kesimpulan = "Anda belum memilih gejala apapun.\nSilakan pilih gejala yang Anda alami untuk mendapatkan hasil diagnosa."
         
@@ -152,5 +152,5 @@ class AplikasiPakarDeteksiPenyakit(tk.Tk):
         self.tampilkan_halaman(self.halaman_welcome)
 
 if __name__ == "__main__":
-    app = AplikasiPakarDeteksiPenyakit()
+    app = AplikasiPakarDiagnosaPenyakit()
     app.mainloop()
